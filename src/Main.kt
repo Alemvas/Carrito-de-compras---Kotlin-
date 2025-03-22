@@ -33,11 +33,10 @@ fun main() {
                 carrito.mostrarCarrito()
                 print("Ingrese el nombre del producto a eliminar: ")
                 val nombre = readLine()
-                val producto = tienda.productos.find { it.nombre.equals(nombre, ignoreCase = true) }
-                if (producto != null) {
-                    carrito.eliminarProducto(producto)
+                if (!nombre.isNullOrBlank()) {
+                    carrito.eliminarProductoPorNombre(nombre)
                 } else {
-                    println("Producto no encontrado en el carrito.")
+                    println("Nombre inválido.")
                 }
             }
             4 -> carrito.mostrarCarrito()

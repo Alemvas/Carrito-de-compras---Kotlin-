@@ -11,11 +11,12 @@ class Carrito {
         }
     }
 
-    fun eliminarProducto(producto: Producto) {
-        if (productosEnCarrito.containsKey(producto)) {
-            producto.cantidadDisponible += productosEnCarrito[producto]!!
-            productosEnCarrito.remove(producto)
-            println("${producto.nombre} eliminado del carrito.")
+    fun eliminarProductoPorNombre(nombre: String) {
+        val entrada = productosEnCarrito.entries.find { it.key.nombre.equals(nombre, ignoreCase = true) }
+        if (entrada != null) {
+            entrada.key.cantidadDisponible += entrada.value
+            productosEnCarrito.remove(entrada.key)
+            println("${entrada.key.nombre} eliminado del carrito.")
         } else {
             println("El producto no está en el carrito.")
         }
